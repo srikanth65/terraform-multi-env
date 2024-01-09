@@ -1,0 +1,19 @@
+# to Configure backend for dev
+terraform init -backend-config=dev/backend.tf 
+
+# to give dev tfvars others default values will be passed 
+# (if defaults values are not given in code, command prompt will ask for tfvars, 
+# it's best not to give default values when we are switching between environments)
+terraform plan -var-file=dev/dev.tfvars
+terraform apply -var-file=dev/dev.tfvars
+terraform destroy -var-file=dev/dev.tfvars
+# to switch between env 
+terraform init -reconfigure -backend-config=dev/backend.tf 
+
+#to Configure backend for prod ( reconfigure when switching between environments )
+terraform init -reconfigure -backend-config=prod/backend.tf 
+
+#to give prod tfvars others default values will be passed
+terraform plan -var-file=prod/prod.tfvars
+terraform apply -var-file=prod/prod.tfvars
+terraform destroy -var-file=prod/prod.tfvars

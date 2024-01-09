@@ -1,0 +1,12 @@
+# To get existing workspace
+terraform workspace list
+
+# to create new workspace dev
+terraform workspace new dev 
+
+# to see in which workspace you are in
+terraform workspace show
+terraform workspace list 
+
+# to switch between workspaces to move to prod env 
+terraform workspace select prod 
